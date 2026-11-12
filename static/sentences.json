@@ -1,0 +1,52 @@
+[
+    {
+        "id": "だ_0.mp3",
+        "text": "アイスクリームだ。",
+        "audio_file": "native_audio/だ_0.mp3"
+    },
+    {
+        "id": "だ_1.mp3",
+        "text": "お寺てらだ。",
+        "audio_file": "native_audio/だ_1.mp3"
+    },
+    {
+        "id": "だ_2.mp3",
+        "text": "危険きけんだ。",
+        "audio_file": "native_audio/だ_2.mp3"
+    },
+    {
+        "id": "だ_3.mp3",
+        "text": "大切たいせつだ。",
+        "audio_file": "native_audio/だ_3.mp3"
+    },
+    {
+        "id": "だ_4.mp3",
+        "text": "綺麗きれいだ。",
+        "audio_file": "native_audio/だ_4.mp3"
+    },
+    {
+        "id": "私わたしだ.mp3",
+        "text": "私わたしだ。",
+        "audio_file": "native_audio/私わたしだ.mp3"
+    },
+    {
+        "id": "本ほんだ.mp3",
+        "text": "本ほんだ。",
+        "audio_file": "native_audio/本ほんだ.mp3"
+    },
+    {
+        "id": "猫ねこだ.mp3",
+        "text": "猫ねこだ。",
+        "audio_file": "native_audio/猫ねこだ.mp3"
+    },
+    {
+        "id": "学生がくせいだ.mp3",
+        "text": "学生がくせいだ。",
+        "audio_file": "native_audio/学生がくせいだ.mp3"
+    },
+    {
+        "id": "綺麗きれいだ.mp3",
+        "text": "綺麗きれいだ。",
+        "audio_file": "native_audio/綺麗きれいだ.mp3"
+    }
+]

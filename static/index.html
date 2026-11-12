@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pitch Contour Comparison</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      background: #fbfbfd;
+      padding-top: 30px;
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      width: 600px;
+    }
+    .sidebar {
+      background: white;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+      width: 250px;
+      max-height: 80vh;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sentence-item {
+      padding: 12px 10px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e0;
+      background: none;
+      cursor: pointer;
+      text-align: left;
+      font-size: 14px;
+      color: #333;
+      transition: all 0.15s;
+    }
+    .sentence-item:hover { background: #f5f5f5; }
+    .sentence-item.active {
+      border-color: #4562a1;
+      background: #eef2fb;
+      font-weight: 600;
+    }
+    .panel-row { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+    .btn-col { display: flex; flex-direction: column; gap: 8px; min-width: 90px; }
+
+    .canvas-wrapper {
+      width: 460px;
+      overflow-x: auto;
+      border-radius: 6px;
+      background: #eee;
+    }
+    canvas {
+      display: block;
+      cursor: crosshair;
+    }
+    .native-canvas { background: #4562a1; }
+    .user-canvas { background: #555555; }
+
+    button { cursor: pointer; border: none; border-radius: 6px; padding: 10px 15px; font-weight: 600; color: white; width: 100%; box-sizing: border-box; }
+    .btn-play { background: #4562a1; }
+    .btn-play-user { background: #777; display: none; }
+    .btn-record { background: #e0245e; }
+    .btn-record.recording { background: #111; }
+
+    .jp-text { font-size: 24px; font-weight: bold; margin-bottom: 25px; text-align: center; }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div id="jpDisplay" class="jp-text">Select a sentence...</div>
+
+  <!-- Reference Audio Row -->
+  <div class="panel-row">
+    <div class="btn-col">
+      <button id="playNativeBtn" class="btn-play">▶ Native</button>
+    </div>
+    <div class="canvas-wrapper">
+      <canvas id="nativeCanvas" class="native-canvas" width="460" height="90"></canvas>
+    </div>
+  </div>
+
+  <!-- User Recording Row -->
+  <div class="panel-row">
+    <div class="btn-col">
+      <button id="recordBtn" class="btn-record">● Record</button>
+      <button id="playUserBtn" class="btn-play-user">▶ Play</button>
+    </div>
+    <div class="canvas-wrapper">
+      <canvas id="userCanvas" class="user-canvas" width="460" height="90"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="sidebar" id="sidebarList">
+  <!-- Sentences will populate here -->
+</div>
+
+<!-- Hidden audio elements for playback -->
+<audio id="nativePlayer"></audio>
+<audio id="userPlayer"></audio>
+
+<script>
+  let mediaRecorder;
+  let audioChunks = [];
+
+  // Changed scale to 5 seconds
+  const PIXELS_PER_SECOND = 460 / 3;
+
+  const recordBtn = document.getElementById('recordBtn');
+  const playUserBtn = document.getElementById('playUserBtn');
+  const jpDisplay = document.getElementById('jpDisplay');
+  const playNativeBtn = document.getElementById('playNativeBtn');
+  const sidebarList = document.getElementById('sidebarList');
+
+  const nativePlayer = document.getElementById('nativePlayer');
+  const userPlayer = document.getElementById('userPlayer');
+
+  let sentencesDb = [];
+
+  fetch('/api/sentences')
+    .then(res => res.json())
+    .then(data => {
+      sentencesDb = data;
+      data.forEach(item => {
+        const btn = document.createElement('button');
+        btn.className = 'sentence-item';
+        btn.textContent = item.text;
+        btn.onclick = () => loadSentence(item, btn);
+        sidebarList.appendChild(btn);
+      });
+    })
+    .catch(err => console.log("Failed to load sentences API."));
+
+  async function loadSentence(sentence, btnElement) {
+    document.querySelectorAll('.sentence-item').forEach(b => b.classList.remove('active'));
+    btnElement.classList.add('active');
+
+    jpDisplay.textContent = sentence.text;
+    nativePlayer.src = '/' + sentence.audio_file;
+
+    const response = await fetch(`/analyze_native?filename=${sentence.id}`);
+    const data = await response.json();
+    drawContour('nativeCanvas', data.contour);
+
+    const userCtx = document.getElementById('userCanvas').getContext('2d');
+    document.getElementById('userCanvas').width = 460;
+    userCtx.clearRect(0, 0, 460, 90);
+    playUserBtn.style.display = 'none';
+    userPlayer.src = "";
+  }
+
+  function drawContour(canvasId, points) {
+    const canvas = document.getElementById(canvasId);
+    const ctx = canvas.getContext('2d');
+
+    const validHz = points.map(p => p.hz).filter(h => h !== null);
+    if (!validHz.length) {
+      canvas.width = 460;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      return;
+    }
+
+    const maxT = points[points.length - 1].t || 1.0;
+
+    const requiredWidth = (maxT * PIXELS_PER_SECOND) + 20;
+    canvas.width = Math.max(460, requiredWidth);
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    const minHz = Math.min(...validHz) * 0.9;
+    const maxHz = Math.max(...validHz) * 1.1;
+
+    ctx.strokeStyle = '#ffffff';
+    ctx.lineWidth = 1.8; // Changed line thickness
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+
+    let drawing = false;
+    points.forEach(p => {
+      if (p.hz === null) {
+        drawing = false;
+        return;
+      }
+      const x = (p.t * PIXELS_PER_SECOND) + 10;
+      const y = canvas.height - ((p.hz - minHz) / (maxHz - minHz) * (canvas.height - 30) + 15);
+
+      if (!drawing) {
+        ctx.moveTo(x, y);
+        drawing = true;
+      } else {
+        ctx.lineTo(x, y);
+      }
+    });
+    ctx.stroke();
+  }
+
+  function handleCanvasClick(e, playerElem) {
+    if (!playerElem.src || playerElem.src.endsWith(window.location.host + '/')) return;
+
+    const rect = e.target.getBoundingClientRect();
+    const clickX = e.clientX - rect.left;
+
+    let targetTime = (clickX - 10) / PIXELS_PER_SECOND;
+    if (targetTime < 0) targetTime = 0;
+
+    playerElem.currentTime = targetTime;
+    playerElem.play();
+  }
+
+  document.getElementById('nativeCanvas').addEventListener('click', (e) => handleCanvasClick(e, nativePlayer));
+  document.getElementById('userCanvas').addEventListener('click', (e) => handleCanvasClick(e, userPlayer));
+
+  playNativeBtn.addEventListener('click', () => {
+    if (nativePlayer.src) nativePlayer.play();
+  });
+
+  playUserBtn.addEventListener('click', () => {
+    if (userPlayer.src) userPlayer.play();
+  });
+
+  recordBtn.addEventListener('click', async () => {
+    if (mediaRecorder && mediaRecorder.state === "recording") {
+      mediaRecorder.stop();
+      recordBtn.classList.remove('recording');
+      recordBtn.textContent = '● Record';
+      return;
+    }
+
+    const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    mediaRecorder = new MediaRecorder(stream);
+    audioChunks = [];
+
+    playUserBtn.style.display = 'none';
+
+    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+    mediaRecorder.onstop = async () => {
+      const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+
+      userPlayer.src = URL.createObjectURL(audioBlob);
+      playUserBtn.style.display = 'block';
+
+      userPlayer.play();
+
+      const formData = new FormData();
+      formData.append("file", audioBlob, "user_recording.webm");
+
+      const response = await fetch('/analyze', { method: 'POST', body: formData });
+      const data = await response.json();
+      drawContour('userCanvas', data.contour);
+    };
+
+    mediaRecorder.start();
+    recordBtn.classList.add('recording');
+    recordBtn.textContent = '■ Stop';
+  });
+</script>
+</body>
+</html>
