@@ -6,6 +6,7 @@ from urllib.parse import unquote
 from playwright.sync_api import sync_playwright
 
 AUDIO_DIR = os.path.join("static", "native_audio")
+SESSION_FILE = "bunpro_session.json"
 os.makedirs(AUDIO_DIR, exist_ok=True)
 
 
@@ -25,12 +26,37 @@ def download_male_audio(url, filename):
     return False
 
 
+def login_and_save_session():
+    """Opens a browser for the user to log in manually, then saves the session state."""
+    with sync_playwright() as p:
+        browser = p.chromium.launch(headless=False)
+        context = browser.new_context()
+        page = context.new_page()
+
+        print("\n" + "=" * 50)
+        print("FIRST TIME SETUP: LOGIN REQUIRED")
+        print("1. A browser window will open to the Bunpro login page.")
+        print("2. Please log in with your email and password.")
+        print("3. Once you see your dashboard, return to this terminal and press ENTER.")
+        print("=" * 50 + "\n")
+
+        page.goto("https://bunpro.jp/login")
+        input("Press ENTER here after you have successfully logged in...")
+
+        # Save cookies and local storage to a file
+        context.storage_state(path=SESSION_FILE)
+        browser.close()
+        print("Session saved successfully! You won't need to log in next time.\n")
+
+
 def scrape_bunpro_page(url):
     sentences_db = []
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
-        context = browser.new_context()
+
+        # Load the saved session cookies so Bunpro recognizes your account
+        context = browser.new_context(storage_state=SESSION_FILE)
         page = context.new_page()
 
         network_audio_urls = []
@@ -60,7 +86,6 @@ def scrape_bunpro_page(url):
         except Exception:
             pass
 
-        # --- NEW: Open settings and wait 10 seconds ---
         print("\n" + "=" * 50)
         print("Opening Settings menu...")
         try:
@@ -75,7 +100,6 @@ def scrape_bunpro_page(url):
         print("Waiting 10 SECONDS for you to manually click the Male voice...")
         print("=" * 50 + "\n")
         page.wait_for_timeout(10000)
-        # ----------------------------------------------
 
         # Target ONLY the sentences strictly inside the "Examples" container
         examples_list = page.locator('header#examples ~ ul').first
@@ -95,9 +119,12 @@ def scrape_bunpro_page(url):
 
                 if play_btn.count() > 0:
                     page.evaluate("window.capturedAudio = []")
+                    network_audio_urls.clear()
+
                     play_btn.scroll_into_view_if_needed()
                     play_btn.click(force=True)
-                    page.wait_for_timeout(1000)
+
+                    page.wait_for_timeout(1500)
 
                     captured = page.evaluate("window.capturedAudio")
                     if captured:
@@ -114,7 +141,6 @@ def scrape_bunpro_page(url):
                         audio_url = network_audio_urls[-1]
 
                 if audio_url:
-                    # Create a clean filename from the Japanese text
                     clean_text = re.sub(r'[\\/*?:"<>|。、！？!?\s]', '', jp_text)
 
                     if not clean_text:
@@ -161,6 +187,11 @@ def scrape_bunpro_page(url):
 
 if __name__ == "__main__":
     print("-" * 50)
+
+    # Check if a session file exists before asking for a URL
+    if not os.path.exists(SESSION_FILE):
+        login_and_save_session()
+
     target_url = input("Paste the Bunpro grammar point URL to scrape:\n> ").strip()
     if target_url:
         scrape_bunpro_page(target_url)

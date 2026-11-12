@@ -48,5 +48,110 @@
         "id": "綺麗きれいだ.mp3",
         "text": "綺麗きれいだ。",
         "audio_file": "native_audio/綺麗きれいだ.mp3"
+    },
+    {
+        "id": "あなたです.mp3",
+        "text": "あなたです。",
+        "audio_file": "native_audio/あなたです.mp3"
+    },
+    {
+        "id": "ペンです.mp3",
+        "text": "ペンです。",
+        "audio_file": "native_audio/ペンです.mp3"
+    },
+    {
+        "id": "さくらです.mp3",
+        "text": "さくらです。",
+        "audio_file": "native_audio/さくらです.mp3"
+    },
+    {
+        "id": "友達ともだちです.mp3",
+        "text": "友達ともだちです。",
+        "audio_file": "native_audio/友達ともだちです.mp3"
+    },
+    {
+        "id": "暑あついです.mp3",
+        "text": "暑あついです。",
+        "audio_file": "native_audio/暑あついです.mp3"
+    },
+    {
+        "id": "私わたしはトムです.mp3",
+        "text": "私わたしはトムです。",
+        "audio_file": "native_audio/私わたしはトムです.mp3"
+    },
+    {
+        "id": "あなたはジムです.mp3",
+        "text": "あなたはジムです。",
+        "audio_file": "native_audio/あなたはジムです.mp3"
+    },
+    {
+        "id": "トムは先生せんせいです.mp3",
+        "text": "トムは先生せんせいです。",
+        "audio_file": "native_audio/トムは先生せんせいです.mp3"
+    },
+    {
+        "id": "カバンは汚きたない.mp3",
+        "text": "カバンは汚きたない。",
+        "audio_file": "native_audio/カバンは汚きたない.mp3"
+    },
+    {
+        "id": "カレンダーは必要ひつようです.mp3",
+        "text": "カレンダーは必要ひつようです。",
+        "audio_file": "native_audio/カレンダーは必要ひつようです.mp3"
+    },
+    {
+        "id": "あなたもトムです.mp3",
+        "text": "あなたもトムです。",
+        "audio_file": "native_audio/あなたもトムです.mp3"
+    },
+    {
+        "id": "私わたしも.mp3",
+        "text": "私わたしも。",
+        "audio_file": "native_audio/私わたしも.mp3"
+    },
+    {
+        "id": "服ふくも古ふるい.mp3",
+        "text": "服ふくも古ふるい。",
+        "audio_file": "native_audio/服ふくも古ふるい.mp3"
+    },
+    {
+        "id": "君きみも忙いそがしい.mp3",
+        "text": "君きみも、忙いそがしい。",
+        "audio_file": "native_audio/君きみも忙いそがしい.mp3"
+    },
+    {
+        "id": "ノートも必要ひつよう.mp3",
+        "text": "ノートも必要ひつよう。",
+        "audio_file": "native_audio/ノートも必要ひつよう.mp3"
+    },
+    {
+        "id": "彼女かのじょも可愛かわいいです.mp3",
+        "text": "彼女かのじょも可愛かわいいです。",
+        "audio_file": "native_audio/彼女かのじょも可愛かわいいです.mp3"
+    },
+    {
+        "id": "お母かあさんも元気げんきです.mp3",
+        "text": "お母かあさんも元気げんきです。",
+        "audio_file": "native_audio/お母かあさんも元気げんきです.mp3"
+    },
+    {
+        "id": "田中たなかさんも有名ゆうめいです.mp3",
+        "text": "田中たなかさんも有名ゆうめいです。",
+        "audio_file": "native_audio/田中たなかさんも有名ゆうめいです.mp3"
+    },
+    {
+        "id": "和室わしつも暗くらいです.mp3",
+        "text": "和室わしつも暗くらいです。",
+        "audio_file": "native_audio/和室わしつも暗くらいです.mp3"
+    },
+    {
+        "id": "火曜日かようびも雨あめです.mp3",
+        "text": "火曜日かようびも雨あめです。",
+        "audio_file": "native_audio/火曜日かようびも雨あめです.mp3"
+    },
+    {
+        "id": "晩ばんごはんもパンです.mp3",
+        "text": "晩ばんごはんも、パンです。",
+        "audio_file": "native_audio/晩ばんごはんもパンです.mp3"
     }
 ]
