@@ -4,6 +4,7 @@ import shutil
 import subprocess
 import base64
 import io
+import imageio_ffmpeg
 
 import librosa
 import librosa.display
@@ -75,7 +76,7 @@ async def analyze_audio(file: UploadFile = File(...)):
 
     try:
         subprocess.run(
-            ["ffmpeg", "-y", "-i", temp_in, "-acodec", "pcm_s16le", "-ar", "44100", temp_wav],
+            [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-i", temp_in, "-acodec", "pcm_s16le", "-ar", "44100", temp_wav],
             check=True,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL
