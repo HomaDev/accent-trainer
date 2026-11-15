@@ -1,0 +1,7 @@
+.idea/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+bunpro_session.json
+static/native_audio/
