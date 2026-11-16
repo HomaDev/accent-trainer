@@ -848,7 +848,7 @@
       const formData = new FormData();
       formData.append('file', audioItem.blob, 'reference_audio');
 
-      const response = await fetch('/analyze', { method: 'POST', body: formData });
+      const response = await fetch('analyze', { method: 'POST', body: formData });
       const analyzed = await response.json();
 
       audioItem.analysisData = analyzed;

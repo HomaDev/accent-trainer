@@ -4,7 +4,6 @@ import shutil
 import subprocess
 import base64
 import io
-import imageio_ffmpeg
 
 import librosa
 import librosa.display
@@ -14,7 +13,7 @@ import matplotlib
 matplotlib.use('Agg')  # Headless mode for servers
 import matplotlib.pyplot as plt
 
-from fastapi import FastAPI, UploadFile, File
+from fastapi import FastAPI, UploadFile, File, APIRouter
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 
@@ -26,6 +25,14 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
+def get_ffmpeg_bin() -> str:
+    system_ffmpeg = shutil.which("ffmpeg")
+    if system_ffmpeg:
+        return system_ffmpeg
+    import imageio_ffmpeg
+    return imageio_ffmpeg.get_ffmpeg_exe()
 
 
 def extract_audio_data(file_path: str):
@@ -65,7 +72,10 @@ def extract_audio_data(file_path: str):
     }
 
 
-@app.post("/analyze")
+router = APIRouter()
+
+
+@router.post("/analyze")
 async def analyze_audio(file: UploadFile = File(...)):
     req_id = uuid.uuid4().hex
     temp_in = f"/tmp/in_{req_id}"
@@ -76,7 +86,7 @@ async def analyze_audio(file: UploadFile = File(...)):
 
     try:
         subprocess.run(
-            [imageio_ffmpeg.get_ffmpeg_exe(), "-y", "-i", temp_in, "-acodec", "pcm_s16le", "-ar", "44100", temp_wav],
+            [get_ffmpeg_bin(), "-y", "-i", temp_in, "-acodec", "pcm_s16le", "-ar", "44100", temp_wav],
             check=True,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL
@@ -91,5 +101,9 @@ async def analyze_audio(file: UploadFile = File(...)):
     return data
 
 
+app.include_router(router)
+app.include_router(router, prefix="/accent-trainer")
+
 os.makedirs("static", exist_ok=True)
-app.mount("/", StaticFiles(directory="static", html=True), name="static")
+app.mount("/accent-trainer", StaticFiles(directory="static", html=True), name="static_subpath")
+app.mount("/", StaticFiles(directory="static", html=True), name="static_root")
