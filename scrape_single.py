@@ -10,6 +10,37 @@ SESSION_FILE = "bunpro_session.json"
 os.makedirs(AUDIO_DIR, exist_ok=True)
 
 
+def get_library_state():
+    """Finds the highest existing prefix number and tracks already-downloaded files."""
+    max_num = 0
+    existing_base_names = set()
+
+    if os.path.exists(AUDIO_DIR):
+        for fname in os.listdir(AUDIO_DIR):
+            match = re.match(r"^(\d+)\.\s*(.+)$", fname)
+            if match:
+                max_num = max(max_num, int(match.group(1)))
+                existing_base_names.add(match.group(2))
+            elif fname.endswith(".mp3"):
+                existing_base_names.add(fname)
+
+    db_path = os.path.join("static", "sentences.json")
+    existing_db = []
+    if os.path.exists(db_path):
+        with open(db_path, "r", encoding="utf-8") as f:
+            existing_db = json.load(f)
+        for item in existing_db:
+            item_id = item.get("id", "")
+            match = re.match(r"^(\d+)\.\s*(.+)$", item_id)
+            if match:
+                max_num = max(max_num, int(match.group(1)))
+                existing_base_names.add(match.group(2))
+            elif item_id:
+                existing_base_names.add(item_id)
+
+    return max_num, existing_base_names, existing_db
+
+
 def download_male_audio(url, filename):
     # Fallback to force the URL to point to the male audio directory
     if "female_audio" in url:
@@ -43,19 +74,19 @@ def login_and_save_session():
         page.goto("https://bunpro.jp/login")
         input("Press ENTER here after you have successfully logged in...")
 
-        # Save cookies and local storage to a file
         context.storage_state(path=SESSION_FILE)
         browser.close()
         print("Session saved successfully! You won't need to log in next time.\n")
 
 
 def scrape_bunpro_page(url):
-    sentences_db = []
+    current_num, existing_base_names, existing_db = get_library_state()
+    new_entries = []
+
+    print(f"Highest existing audio number: {current_num:04d} (next will be {current_num + 1:04d})")
 
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
-
-        # Load the saved session cookies so Bunpro recognizes your account
         context = browser.new_context(storage_state=SESSION_FILE)
         page = context.new_page()
 
@@ -86,22 +117,6 @@ def scrape_bunpro_page(url):
         except Exception:
             pass
 
-        print("\n" + "=" * 50)
-        print("Opening Settings menu...")
-        try:
-            settings_gear = page.locator(
-                'header#examples ~ header button[title*="設定"], header#examples ~ header button[title*="Settings"]').first
-            if settings_gear.is_visible():
-                settings_gear.scroll_into_view_if_needed()
-                settings_gear.click(force=True)
-        except Exception:
-            print("Could not auto-click the settings gear. Please click it yourself!")
-
-        print("Waiting 10 SECONDS for you to manually click the Male voice...")
-        print("=" * 50 + "\n")
-        page.wait_for_timeout(10000)
-
-        # Target ONLY the sentences strictly inside the "Examples" container
         examples_list = page.locator('header#examples ~ ul').first
         examples = examples_list.locator('li[id^="study-question-"]').all()
 
@@ -113,7 +128,25 @@ def scrape_bunpro_page(url):
                 if jp_element.count() == 0:
                     continue
 
-                jp_text = jp_element.first.inner_text().replace('\n', '').strip()
+                # Clone the node and remove <rt>/<rp> furigana tags before extracting text
+                jp_text = jp_element.first.evaluate("""
+                    el => {
+                        const clone = el.cloneNode(true);
+                        clone.querySelectorAll('rt, rp').forEach(node => node.remove());
+                        return clone.innerText;
+                    }
+                """).replace('\n', '').strip()
+
+                clean_text = re.sub(r'[\\/*?:"<>|。、！？!?\s]', '', jp_text)
+                if not clean_text:
+                    grammar_name = unquote(url.split('/')[-1])
+                    clean_text = f"{grammar_name}_{i}"
+
+                base_name = f"{clean_text}.mp3"
+                if base_name in existing_base_names:
+                    print(f"[{i + 1}/{len(examples)}] Skipped (Already downloaded): {base_name}")
+                    continue
+
                 play_btn = example.locator('button[title="再生"], button[title="Play"]').first
                 audio_url = None
 
@@ -141,20 +174,17 @@ def scrape_bunpro_page(url):
                         audio_url = network_audio_urls[-1]
 
                 if audio_url:
-                    clean_text = re.sub(r'[\\/*?:"<>|。、！？!?\s]', '', jp_text)
-
-                    if not clean_text:
-                        grammar_name = unquote(url.split('/')[-1])
-                        clean_text = f"{grammar_name}_{i}"
-
-                    safe_name = f"{clean_text}.mp3"
+                    next_num = current_num + 1
+                    safe_name = f"{next_num:04d}. {base_name}"
                     local_filepath = os.path.join(AUDIO_DIR, safe_name)
 
                     print(f"[{i + 1}/{len(examples)}] Saving Audio: {safe_name}")
                     success = download_male_audio(audio_url, local_filepath)
 
                     if success:
-                        sentences_db.append({
+                        current_num = next_num
+                        existing_base_names.add(base_name)
+                        new_entries.append({
                             "id": safe_name,
                             "text": jp_text,
                             "audio_file": f"native_audio/{safe_name}"
@@ -170,25 +200,16 @@ def scrape_bunpro_page(url):
         browser.close()
 
     db_path = os.path.join("static", "sentences.json")
-    if os.path.exists(db_path):
-        with open(db_path, "r", encoding="utf-8") as f:
-            existing_db = json.load(f)
-            existing_ids = {item['id'] for item in existing_db}
-            new_entries = [item for item in sentences_db if item['id'] not in existing_ids]
-            sentences_db = existing_db + new_entries
-    else:
-        sentences_db = sentences_db
-
+    total_db = existing_db + new_entries
     with open(db_path, "w", encoding="utf-8") as f:
-        json.dump(sentences_db, f, ensure_ascii=False, indent=4)
+        json.dump(total_db, f, ensure_ascii=False, indent=4)
 
-    print(f"\nDone! You now have {len(sentences_db)} total sentences in your database.")
+    print(f"\nDone! Added {len(new_entries)} new files (total: {len(total_db)}).")
 
 
 if __name__ == "__main__":
     print("-" * 50)
 
-    # Check if a session file exists before asking for a URL
     if not os.path.exists(SESSION_FILE):
         login_and_save_session()
 

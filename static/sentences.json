@@ -1,0 +1,682 @@
+[
+    {
+        "id": "0001. 私だ.mp3",
+        "text": "私だ。",
+        "audio_file": "native_audio/0001. 私だ.mp3"
+    },
+    {
+        "id": "0002. 本だ.mp3",
+        "text": "本だ。",
+        "audio_file": "native_audio/0002. 本だ.mp3"
+    },
+    {
+        "id": "0003. 学生だ.mp3",
+        "text": "学生だ。",
+        "audio_file": "native_audio/0003. 学生だ.mp3"
+    },
+    {
+        "id": "0004. 綺麗だ.mp3",
+        "text": "綺麗だ。",
+        "audio_file": "native_audio/0004. 綺麗だ.mp3"
+    },
+    {
+        "id": "0005. 海だ.mp3",
+        "text": "海だ。",
+        "audio_file": "native_audio/0005. 海だ.mp3"
+    },
+    {
+        "id": "0006. 映画だ.mp3",
+        "text": "映画だ。",
+        "audio_file": "native_audio/0006. 映画だ.mp3"
+    },
+    {
+        "id": "0007. 好きだ.mp3",
+        "text": "好きだ。",
+        "audio_file": "native_audio/0007. 好きだ.mp3"
+    },
+    {
+        "id": "0008. 家だ.mp3",
+        "text": "家だ。",
+        "audio_file": "native_audio/0008. 家だ.mp3"
+    },
+    {
+        "id": "0009. 水だ.mp3",
+        "text": "水だ。",
+        "audio_file": "native_audio/0009. 水だ.mp3"
+    },
+    {
+        "id": "0010. 同じだ.mp3",
+        "text": "同じだ。",
+        "audio_file": "native_audio/0010. 同じだ.mp3"
+    },
+    {
+        "id": "0011. 大変だ.mp3",
+        "text": "大変だ。",
+        "audio_file": "native_audio/0011. 大変だ.mp3"
+    },
+    {
+        "id": "0012. 質問だ.mp3",
+        "text": "質問だ。",
+        "audio_file": "native_audio/0012. 質問だ.mp3"
+    },
+    {
+        "id": "0013. 私はトムです.mp3",
+        "text": "私はトムです。",
+        "audio_file": "native_audio/0013. 私はトムです.mp3"
+    },
+    {
+        "id": "0014. あなたはジムです.mp3",
+        "text": "あなたはジムです。",
+        "audio_file": "native_audio/0014. あなたはジムです.mp3"
+    },
+    {
+        "id": "0015. カバンは汚い.mp3",
+        "text": "カバンは汚い。",
+        "audio_file": "native_audio/0015. カバンは汚い.mp3"
+    },
+    {
+        "id": "0016. カレンダーは必要です.mp3",
+        "text": "カレンダーは必要です。",
+        "audio_file": "native_audio/0016. カレンダーは必要です.mp3"
+    },
+    {
+        "id": "0017. 玄関は暗い.mp3",
+        "text": "玄関は暗い。",
+        "audio_file": "native_audio/0017. 玄関は暗い.mp3"
+    },
+    {
+        "id": "0018. 彼は真面目です.mp3",
+        "text": "彼は真面目です。",
+        "audio_file": "native_audio/0018. 彼は真面目です.mp3"
+    },
+    {
+        "id": "0019. 私は忙しいです.mp3",
+        "text": "私は忙しいです。",
+        "audio_file": "native_audio/0019. 私は忙しいです.mp3"
+    },
+    {
+        "id": "0020. 明日は月曜日です.mp3",
+        "text": "明日は月曜日です。",
+        "audio_file": "native_audio/0020. 明日は月曜日です.mp3"
+    },
+    {
+        "id": "0021. 公園は広い.mp3",
+        "text": "公園は広い。",
+        "audio_file": "native_audio/0021. 公園は広い.mp3"
+    },
+    {
+        "id": "0022. 海は綺麗です.mp3",
+        "text": "海は綺麗です。",
+        "audio_file": "native_audio/0022. 海は綺麗です.mp3"
+    },
+    {
+        "id": "0023. 宮崎駿さんは有名です.mp3",
+        "text": "宮崎駿さんは有名です。",
+        "audio_file": "native_audio/0023. 宮崎駿さんは有名です.mp3"
+    },
+    {
+        "id": "0024. これはペンです.mp3",
+        "text": "これはペンです。",
+        "audio_file": "native_audio/0024. これはペンです.mp3"
+    },
+    {
+        "id": "0025. これは本です.mp3",
+        "text": "これは本です。",
+        "audio_file": "native_audio/0025. これは本です.mp3"
+    },
+    {
+        "id": "0026. これも寿司です.mp3",
+        "text": "これも寿司です。",
+        "audio_file": "native_audio/0026. これも寿司です.mp3"
+    },
+    {
+        "id": "0027. これは海です.mp3",
+        "text": "これは、海です。",
+        "audio_file": "native_audio/0027. これは海です.mp3"
+    },
+    {
+        "id": "0028. これも必要です.mp3",
+        "text": "これも必要です。",
+        "audio_file": "native_audio/0028. これも必要です.mp3"
+    },
+    {
+        "id": "0029. これは何.mp3",
+        "text": "これは何？",
+        "audio_file": "native_audio/0029. これは何.mp3"
+    },
+    {
+        "id": "0030. これは犬です.mp3",
+        "text": "これは、犬です。",
+        "audio_file": "native_audio/0030. これは犬です.mp3"
+    },
+    {
+        "id": "0031. これは丸いです.mp3",
+        "text": "これは、丸いです。",
+        "audio_file": "native_audio/0031. これは丸いです.mp3"
+    },
+    {
+        "id": "0032. これは便利です.mp3",
+        "text": "これは、便利です。",
+        "audio_file": "native_audio/0032. これは便利です.mp3"
+    },
+    {
+        "id": "0033. これも古い.mp3",
+        "text": "これも古い。",
+        "audio_file": "native_audio/0033. これも古い.mp3"
+    },
+    {
+        "id": "0034. これも便利だ.mp3",
+        "text": "これも便利だ。",
+        "audio_file": "native_audio/0034. これも便利だ.mp3"
+    },
+    {
+        "id": "0035. これはお風呂です.mp3",
+        "text": "これは、お風呂です。",
+        "audio_file": "native_audio/0035. これはお風呂です.mp3"
+    },
+    {
+        "id": "0036. それです.mp3",
+        "text": "それです。",
+        "audio_file": "native_audio/0036. それです.mp3"
+    },
+    {
+        "id": "0037. それもエアコンです.mp3",
+        "text": "それもエアコンです。",
+        "audio_file": "native_audio/0037. それもエアコンです.mp3"
+    },
+    {
+        "id": "0038. それは本です.mp3",
+        "text": "それは本です。",
+        "audio_file": "native_audio/0038. それは本です.mp3"
+    },
+    {
+        "id": "0039. それは水です.mp3",
+        "text": "それは、水です。",
+        "audio_file": "native_audio/0039. それは水です.mp3"
+    },
+    {
+        "id": "0040. それはお皿です.mp3",
+        "text": "それは、お皿です。",
+        "audio_file": "native_audio/0040. それはお皿です.mp3"
+    },
+    {
+        "id": "0041. それはペンです.mp3",
+        "text": "それは、ペンです。",
+        "audio_file": "native_audio/0041. それはペンです.mp3"
+    },
+    {
+        "id": "0042. それはギターです.mp3",
+        "text": "それは、ギターです。",
+        "audio_file": "native_audio/0042. それはギターです.mp3"
+    },
+    {
+        "id": "0043. それも牛乳です.mp3",
+        "text": "それも牛乳です。",
+        "audio_file": "native_audio/0043. それも牛乳です.mp3"
+    },
+    {
+        "id": "0044. それはカメラだ.mp3",
+        "text": "それは、カメラだ。",
+        "audio_file": "native_audio/0044. それはカメラだ.mp3"
+    },
+    {
+        "id": "0045. あれは私のペンです.mp3",
+        "text": "あれは私のペンです。",
+        "audio_file": "native_audio/0045. あれは私のペンです.mp3"
+    },
+    {
+        "id": "0046. これも私のペンです.mp3",
+        "text": "これも私のペンです。",
+        "audio_file": "native_audio/0046. これも私のペンです.mp3"
+    },
+    {
+        "id": "0047. これは私の猫です.mp3",
+        "text": "これは私の猫です。",
+        "audio_file": "native_audio/0047. これは私の猫です.mp3"
+    },
+    {
+        "id": "0048. 先生の傘です.mp3",
+        "text": "先生の傘です。",
+        "audio_file": "native_audio/0048. 先生の傘です.mp3"
+    },
+    {
+        "id": "0049. あなたの名前は.mp3",
+        "text": "あなたの名前は？",
+        "audio_file": "native_audio/0049. あなたの名前は.mp3"
+    },
+    {
+        "id": "0050. これは私の兄だ.mp3",
+        "text": "これは、私の兄だ。",
+        "audio_file": "native_audio/0050. これは私の兄だ.mp3"
+    },
+    {
+        "id": "0051. これは生徒のノートです.mp3",
+        "text": "これは生徒のノートです。",
+        "audio_file": "native_audio/0051. これは生徒のノートです.mp3"
+    },
+    {
+        "id": "0052. 今日の夜.mp3",
+        "text": "今日の夜。",
+        "audio_file": "native_audio/0052. 今日の夜.mp3"
+    },
+    {
+        "id": "0053. 駅のホーム.mp3",
+        "text": "駅のホーム。",
+        "audio_file": "native_audio/0053. 駅のホーム.mp3"
+    },
+    {
+        "id": "0054. これも生徒のノートです.mp3",
+        "text": "これも生徒のノートです。",
+        "audio_file": "native_audio/0054. これも生徒のノートです.mp3"
+    },
+    {
+        "id": "0055. これはお父さんの時計だ.mp3",
+        "text": "これはお父さんの時計だ。",
+        "audio_file": "native_audio/0055. これはお父さんの時計だ.mp3"
+    },
+    {
+        "id": "0056. これはお母さんの部屋です.mp3",
+        "text": "これはお母さんの部屋です。",
+        "audio_file": "native_audio/0056. これはお母さんの部屋です.mp3"
+    },
+    {
+        "id": "0057. お茶が冷たいです.mp3",
+        "text": "お茶が冷たいです。",
+        "audio_file": "native_audio/0057. お茶が冷たいです.mp3"
+    },
+    {
+        "id": "0058. 何がいい.mp3",
+        "text": "何がいい？",
+        "audio_file": "native_audio/0058. 何がいい.mp3"
+    },
+    {
+        "id": "0059. それがいいです.mp3",
+        "text": "それがいいです。",
+        "audio_file": "native_audio/0059. それがいいです.mp3"
+    },
+    {
+        "id": "0060. 木が高い.mp3",
+        "text": "木が高い。",
+        "audio_file": "native_audio/0060. 木が高い.mp3"
+    },
+    {
+        "id": "0061. 体が大きい.mp3",
+        "text": "体が大きい。",
+        "audio_file": "native_audio/0061. 体が大きい.mp3"
+    },
+    {
+        "id": "0062. 川が細い.mp3",
+        "text": "川が細い。",
+        "audio_file": "native_audio/0062. 川が細い.mp3"
+    },
+    {
+        "id": "0063. 私は赤色の車が欲しいです.mp3",
+        "text": "私は赤色の車が欲しいです。",
+        "audio_file": "native_audio/0063. 私は赤色の車が欲しいです.mp3"
+    },
+    {
+        "id": "0064. バナナが欲しいですか.mp3",
+        "text": "バナナが欲しいですか。",
+        "audio_file": "native_audio/0064. バナナが欲しいですか.mp3"
+    },
+    {
+        "id": "0065. これがいいですか.mp3",
+        "text": "これがいいですか。",
+        "audio_file": "native_audio/0065. これがいいですか.mp3"
+    },
+    {
+        "id": "0066. フルーツがいいです.mp3",
+        "text": "フルーツがいいです。",
+        "audio_file": "native_audio/0066. フルーツがいいです.mp3"
+    },
+    {
+        "id": "0067. 漢字を覚える.mp3",
+        "text": "漢字を覚える。",
+        "audio_file": "native_audio/0067. 漢字を覚える.mp3"
+    },
+    {
+        "id": "0068. 何を食べますか.mp3",
+        "text": "何を食べますか。",
+        "audio_file": "native_audio/0068. 何を食べますか.mp3"
+    },
+    {
+        "id": "0069. バターを食べる.mp3",
+        "text": "バターを食べる。",
+        "audio_file": "native_audio/0069. バターを食べる.mp3"
+    },
+    {
+        "id": "0070. スポーツを見る.mp3",
+        "text": "スポーツを見る。",
+        "audio_file": "native_audio/0070. スポーツを見る.mp3"
+    },
+    {
+        "id": "0071. 時計を見る.mp3",
+        "text": "時計を見る。",
+        "audio_file": "native_audio/0071. 時計を見る.mp3"
+    },
+    {
+        "id": "0072. テレビを見る.mp3",
+        "text": "テレビを見る。",
+        "audio_file": "native_audio/0072. テレビを見る.mp3"
+    },
+    {
+        "id": "0073. ドアを閉める.mp3",
+        "text": "ドアを閉める。",
+        "audio_file": "native_audio/0073. ドアを閉める.mp3"
+    },
+    {
+        "id": "0074. 鶏肉を食べます.mp3",
+        "text": "鶏肉を食べます。",
+        "audio_file": "native_audio/0074. 鶏肉を食べます.mp3"
+    },
+    {
+        "id": "0075. ニュースを見る.mp3",
+        "text": "ニュースを見る。",
+        "audio_file": "native_audio/0075. ニュースを見る.mp3"
+    },
+    {
+        "id": "0076. カタカナを覚える.mp3",
+        "text": "カタカナを覚える。",
+        "audio_file": "native_audio/0076. カタカナを覚える.mp3"
+    },
+    {
+        "id": "0077. 家を出ます.mp3",
+        "text": "家を出ます。",
+        "audio_file": "native_audio/0077. 家を出ます.mp3"
+    },
+    {
+        "id": "0078. お金を借りる.mp3",
+        "text": "お金を借りる。",
+        "audio_file": "native_audio/0078. お金を借りる.mp3"
+    },
+    {
+        "id": "0079. 面白い映画を見ます.mp3",
+        "text": "面白い映画を見ます。",
+        "audio_file": "native_audio/0079. 面白い映画を見ます.mp3"
+    },
+    {
+        "id": "0080. 名前を書きます.mp3",
+        "text": "名前を書きます。",
+        "audio_file": "native_audio/0080. 名前を書きます.mp3"
+    },
+    {
+        "id": "0081. 公園のゴミを拾います.mp3",
+        "text": "公園のゴミを拾います。",
+        "audio_file": "native_audio/0081. 公園のゴミを拾います.mp3"
+    },
+    {
+        "id": "0082. 母は映画を見ます.mp3",
+        "text": "母は映画を見ます。",
+        "audio_file": "native_audio/0082. 母は映画を見ます.mp3"
+    },
+    {
+        "id": "0083. 友人の自転車を借ります.mp3",
+        "text": "友人の自転車を借ります。",
+        "audio_file": "native_audio/0083. 友人の自転車を借ります.mp3"
+    },
+    {
+        "id": "0084. 私は寝ます.mp3",
+        "text": "私は寝ます。",
+        "audio_file": "native_audio/0084. 私は寝ます.mp3"
+    },
+    {
+        "id": "0085. 彼は行きます.mp3",
+        "text": "彼は行きます。",
+        "audio_file": "native_audio/0085. 彼は行きます.mp3"
+    },
+    {
+        "id": "0086. 僕も遊びます.mp3",
+        "text": "僕も遊びます。",
+        "audio_file": "native_audio/0086. 僕も遊びます.mp3"
+    },
+    {
+        "id": "0087. 明かりをつけます.mp3",
+        "text": "明かりをつけます。",
+        "audio_file": "native_audio/0087. 明かりをつけます.mp3"
+    },
+    {
+        "id": "0088. 弟はこれも食べます.mp3",
+        "text": "弟は、これも食べます。",
+        "audio_file": "native_audio/0088. 弟はこれも食べます.mp3"
+    },
+    {
+        "id": "0089. このマッサージは効きます.mp3",
+        "text": "このマッサージは効きます。",
+        "audio_file": "native_audio/0089. このマッサージは効きます.mp3"
+    },
+    {
+        "id": "0090. このお菓子はプレゼントが付きます.mp3",
+        "text": "このお菓子は、プレゼントが付きます。",
+        "audio_file": "native_audio/0090. このお菓子はプレゼントが付きます.mp3"
+    },
+    {
+        "id": "0091. 田中さんは水を飲みます.mp3",
+        "text": "田中さんは水を飲みます。",
+        "audio_file": "native_audio/0091. 田中さんは水を飲みます.mp3"
+    },
+    {
+        "id": "0092. 桜の花が咲きます.mp3",
+        "text": "桜の花が咲きます。",
+        "audio_file": "native_audio/0092. 桜の花が咲きます.mp3"
+    },
+    {
+        "id": "0093. 駅の改札が開きます.mp3",
+        "text": "駅の改札が開きます。",
+        "audio_file": "native_audio/0093. 駅の改札が開きます.mp3"
+    },
+    {
+        "id": "0094. 私はシチューを煮込みます.mp3",
+        "text": "私はシチューを煮込みます。",
+        "audio_file": "native_audio/0094. 私はシチューを煮込みます.mp3"
+    },
+    {
+        "id": "0095. 魚とバナナ.mp3",
+        "text": "魚とバナナ。",
+        "audio_file": "native_audio/0095. 魚とバナナ.mp3"
+    },
+    {
+        "id": "0096. トムとジェリー.mp3",
+        "text": "トムとジェリー。",
+        "audio_file": "native_audio/0096. トムとジェリー.mp3"
+    },
+    {
+        "id": "0097. コーヒーと牛乳.mp3",
+        "text": "コーヒーと牛乳。",
+        "audio_file": "native_audio/0097. コーヒーと牛乳.mp3"
+    },
+    {
+        "id": "0098. これとそれは私のものです.mp3",
+        "text": "これとそれは私のものです。",
+        "audio_file": "native_audio/0098. これとそれは私のものです.mp3"
+    },
+    {
+        "id": "0099. メアリーとたけしとロバートは大学生だ.mp3",
+        "text": "メアリーとたけしとロバートは大学生だ。",
+        "audio_file": "native_audio/0099. メアリーとたけしとロバートは大学生だ.mp3"
+    },
+    {
+        "id": "0100. これとこれもあなたのですよね.mp3",
+        "text": "これとこれもあなたのですよね。",
+        "audio_file": "native_audio/0100. これとこれもあなたのですよね.mp3"
+    },
+    {
+        "id": "0101. レストランと映画館は楽しい.mp3",
+        "text": "レストランと映画館は楽しい。",
+        "audio_file": "native_audio/0101. レストランと映画館は楽しい.mp3"
+    },
+    {
+        "id": "0102. 私はフルーツとパンも食べます.mp3",
+        "text": "私はフルーツとパンも食べます。",
+        "audio_file": "native_audio/0102. 私はフルーツとパンも食べます.mp3"
+    },
+    {
+        "id": "0103. ポチとサタケは犬です.mp3",
+        "text": "ポチとサタケは犬です。",
+        "audio_file": "native_audio/0103. ポチとサタケは犬です.mp3"
+    },
+    {
+        "id": "0104. 沖縄の海とビーチは綺麗です.mp3",
+        "text": "沖縄の海とビーチは綺麗です。",
+        "audio_file": "native_audio/0104. 沖縄の海とビーチは綺麗です.mp3"
+    },
+    {
+        "id": "0105. ここです.mp3",
+        "text": "ここです。",
+        "audio_file": "native_audio/0105. ここです.mp3"
+    },
+    {
+        "id": "0106. ここがいい.mp3",
+        "text": "ここがいい。",
+        "audio_file": "native_audio/0106. ここがいい.mp3"
+    },
+    {
+        "id": "0107. ここもいい.mp3",
+        "text": "ここもいい。",
+        "audio_file": "native_audio/0107. ここもいい.mp3"
+    },
+    {
+        "id": "0108. ここがいいですか.mp3",
+        "text": "ここがいいですか。",
+        "audio_file": "native_audio/0108. ここがいいですか.mp3"
+    },
+    {
+        "id": "0109. ここは私のおばあちゃんの家だ.mp3",
+        "text": "ここは、私のおばあちゃんの家だ。",
+        "audio_file": "native_audio/0109. ここは私のおばあちゃんの家だ.mp3"
+    },
+    {
+        "id": "0110. ここは和室です.mp3",
+        "text": "ここは、和室です。",
+        "audio_file": "native_audio/0110. ここは和室です.mp3"
+    },
+    {
+        "id": "0111. ここはレストランです.mp3",
+        "text": "ここは、レストランです。",
+        "audio_file": "native_audio/0111. ここはレストランです.mp3"
+    },
+    {
+        "id": "0112. ここは外です.mp3",
+        "text": "ここは、外です。",
+        "audio_file": "native_audio/0112. ここは外です.mp3"
+    },
+    {
+        "id": "0113. ここの店は美味しいですか.mp3",
+        "text": "ここの店は美味しいですか。",
+        "audio_file": "native_audio/0113. ここの店は美味しいですか.mp3"
+    },
+    {
+        "id": "0114. そこで寝る.mp3",
+        "text": "そこで寝る。",
+        "audio_file": "native_audio/0114. そこで寝る.mp3"
+    },
+    {
+        "id": "0115. ホテルで寝る.mp3",
+        "text": "ホテルで寝る。",
+        "audio_file": "native_audio/0115. ホテルで寝る.mp3"
+    },
+    {
+        "id": "0116. ここで曲がります.mp3",
+        "text": "ここで曲がります。",
+        "audio_file": "native_audio/0116. ここで曲がります.mp3"
+    },
+    {
+        "id": "0117. 私はここでサッカーをする.mp3",
+        "text": "私はここでサッカーをする。",
+        "audio_file": "native_audio/0117. 私はここでサッカーをする.mp3"
+    },
+    {
+        "id": "0118. そこで泳ぎますか.mp3",
+        "text": "そこで泳ぎますか。",
+        "audio_file": "native_audio/0118. そこで泳ぎますか.mp3"
+    },
+    {
+        "id": "0119. 教室で寝る.mp3",
+        "text": "教室で寝る。",
+        "audio_file": "native_audio/0119. 教室で寝る.mp3"
+    },
+    {
+        "id": "0120. ここでサラと文法を習う.mp3",
+        "text": "ここでサラと文法を習う。",
+        "audio_file": "native_audio/0120. ここでサラと文法を習う.mp3"
+    },
+    {
+        "id": "0121. ここで映画を見る.mp3",
+        "text": "ここで映画を見る。",
+        "audio_file": "native_audio/0121. ここで映画を見る.mp3"
+    },
+    {
+        "id": "0122. レストランでお母さんとご飯を食べる.mp3",
+        "text": "レストランでお母さんとご飯を食べる。",
+        "audio_file": "native_audio/0122. レストランでお母さんとご飯を食べる.mp3"
+    },
+    {
+        "id": "0123. 図書館で日本語を学ぶ.mp3",
+        "text": "図書館で日本語を学ぶ。",
+        "audio_file": "native_audio/0123. 図書館で日本語を学ぶ.mp3"
+    },
+    {
+        "id": "0124. 学校で給食を食べる.mp3",
+        "text": "学校で給食を食べる。",
+        "audio_file": "native_audio/0124. 学校で給食を食べる.mp3"
+    },
+    {
+        "id": "0125. 古い家で新聞を読む.mp3",
+        "text": "古い家で新聞を読む。",
+        "audio_file": "native_audio/0125. 古い家で新聞を読む.mp3"
+    },
+    {
+        "id": "0126. 彼はあそこにいます.mp3",
+        "text": "彼はあそこにいます。",
+        "audio_file": "native_audio/0126. 彼はあそこにいます.mp3"
+    },
+    {
+        "id": "0127. ここに本を置く.mp3",
+        "text": "ここに本を置く。",
+        "audio_file": "native_audio/0127. ここに本を置く.mp3"
+    },
+    {
+        "id": "0128. この机の上に座る.mp3",
+        "text": "この机の上に座る。",
+        "audio_file": "native_audio/0128. この机の上に座る.mp3"
+    },
+    {
+        "id": "0129. 駅に行く.mp3",
+        "text": "駅に行く。",
+        "audio_file": "native_audio/0129. 駅に行く.mp3"
+    },
+    {
+        "id": "0130. 病院に行く.mp3",
+        "text": "病院に行く。",
+        "audio_file": "native_audio/0130. 病院に行く.mp3"
+    },
+    {
+        "id": "0131. 美味しいレストランに行く.mp3",
+        "text": "美味しいレストランに行く。",
+        "audio_file": "native_audio/0131. 美味しいレストランに行く.mp3"
+    },
+    {
+        "id": "0132. 図書館に本を返す.mp3",
+        "text": "図書館に本を返す。",
+        "audio_file": "native_audio/0132. 図書館に本を返す.mp3"
+    },
+    {
+        "id": "0133. 家に帰る.mp3",
+        "text": "家に帰る。",
+        "audio_file": "native_audio/0133. 家に帰る.mp3"
+    },
+    {
+        "id": "0134. 学校に行く.mp3",
+        "text": "学校に行く。",
+        "audio_file": "native_audio/0134. 学校に行く.mp3"
+    },
+    {
+        "id": "0135. 友達の家にいる.mp3",
+        "text": "友達の家にいる。",
+        "audio_file": "native_audio/0135. 友達の家にいる.mp3"
+    },
+    {
+        "id": "0136. 田中さんは公園にいる.mp3",
+        "text": "田中さんは、公園にいる。",
+        "audio_file": "native_audio/0136. 田中さんは公園にいる.mp3"
+    }
+]
